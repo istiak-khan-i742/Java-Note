@@ -1,0 +1,704 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', 'Anek Bangla', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-serif: 'Lora', 'Georgia', serif;
+}
+
+/* ==================================================== */
+/* 🎨 THEME VARIABLE ARCHITECTURE                       */
+/* ==================================================== */
+
+/* Base Variable Architecture - Defaulting to Dark Developer Mode */
+:root, [data-theme="dark"] {
+  --bg-app: #04060f;
+  --bg-app-rgb: 4, 6, 15;
+  --bg-sidebar: #070b1a;
+  --bg-sidebar-header: #080d21;
+  --bg-sidebar-hover: rgba(255, 255, 255, 0.03);
+  --bg-panel: rgba(13, 20, 48, 0.4);
+  --bg-header: rgba(4, 6, 15, 0.82);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  
+  /* Text System */
+  --text-primary: #ccd6f6;
+  --text-secondary: #8892b0;
+  --text-muted: rgba(200, 210, 255, 0.5);
+  --text-white: #ffffff;
+  
+  /* Semantic Variables as requested */
+  --surface-primary: var(--bg-app);
+  --surface-secondary: var(--bg-sidebar);
+  --surface-card: #0c1228;
+  --border-color: var(--border-subtle);
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+  
+  /* Accents */
+  --accent: #6366f1;
+  --accent-rgb: 99, 102, 241;
+  --accent-alt: #8b5cf6;
+  --accent-hover: #4f46e5;
+  --glow-color: rgba(99, 102, 241, 0.25);
+  
+  /* Cards */
+  --card-bg-from: #0c1228;
+  --card-bg-to: #080d21;
+  --card-border: rgba(255, 255, 255, 0.05);
+  --card-hover-border: rgba(99, 102, 241, 0.3);
+  
+  /* Syntaxes & Editor */
+  --editor-bg: #070913;
+  --editor-toolbar: #0b0e1b;
+  --editor-console: #020409;
+  --editor-sidebar: #03050c;
+  --editor-active-tab: #0e1222;
+  --editor-inactive-tab: #05070e;
+  
+  /* Layout effects */
+  --shadow-premium: 0 10px 40px -15px rgba(1, 2, 8, 0.8);
+  --font-app: var(--font-sans);
+  --card-shadow: 0 4px 20px -20px rgba(0, 0, 0, 0.5);
+  
+  --quiz-bg-active: rgba(245, 158, 11, 0.15);
+  --quiz-text-active: #fef08a;
+  --quiz-border-active: rgba(245, 158, 11, 0.35);
+  --quiz-bg-hover: rgba(245, 158, 11, 0.03);
+  --quiz-text-hover: #fef08a;
+  --quiz-border-hover: rgba(245, 158, 11, 0.2);
+}
+
+/* ☀️ Clean Light Academic Mode */
+[data-theme="light"] {
+  --bg-app: #f5f7fa;
+  --bg-app-rgb: 245, 247, 250;
+  --bg-sidebar: #ffffff;
+  --bg-sidebar-header: #f8fafc;
+  --bg-sidebar-hover: rgba(59, 130, 246, 0.04);
+  --bg-panel: #ffffff;
+  --bg-header: rgba(245, 247, 250, 0.88);
+  --border-subtle: rgba(15, 23, 42, 0.06);
+  --border-strong: rgba(15, 23, 42, 0.12);
+  
+  /* Text System */
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-white: #0f172a;
+  
+  /* Semantic Variables as requested */
+  --surface-primary: var(--bg-app);
+  --surface-secondary: var(--bg-sidebar);
+  --surface-card: #ffffff;
+  --border-color: var(--border-subtle);
+  --bg-overlay: rgba(15, 23, 42, 0.4);
+  
+  /* Accents */
+  --accent: #3b82f6;
+  --accent-rgb: 59, 130, 246;
+  --accent-alt: #6366f1;
+  --accent-hover: #1d4ed8;
+  --glow-color: transparent;
+  
+  /* Cards */
+  --card-bg-from: #ffffff;
+  --card-bg-to: #f8fafc;
+  --card-border: rgba(15, 23, 42, 0.06);
+  --card-hover-border: rgba(59, 130, 246, 0.3);
+  
+  /* Syntaxes & Editor */
+  --editor-bg: #fafbfc;
+  --editor-toolbar: #f1f5f9;
+  --editor-console: #f8fafc;
+  --editor-sidebar: #f1f5f9;
+  --editor-active-tab: #ffffff;
+  --editor-inactive-tab: #e2e8f0;
+  
+  /* Layout effects */
+  --shadow-premium: 0 8px 30px rgba(15, 23, 42, 0.04), 0 4px 10px rgba(15, 23, 42, 0.01);
+  --font-app: var(--font-sans);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -2px rgba(0, 0, 0, 0.02);
+  
+  --quiz-bg-active: rgba(217, 119, 6, 0.08);
+  --quiz-text-active: #b45309;
+  --quiz-border-active: rgba(217, 119, 6, 0.25);
+  --quiz-bg-hover: rgba(217, 119, 6, 0.02);
+  --quiz-text-hover: #b45309;
+  --quiz-border-hover: rgba(217, 119, 6, 0.15);
+}
+
+/* 📖 Paper / Reading Mode (Warm off-white) */
+[data-theme="paper"] {
+  --bg-app: #f5f1e8;
+  --bg-app-rgb: 245, 241, 232;
+  --bg-sidebar: #efe7da;
+  --bg-sidebar-header: #e5dac9;
+  --bg-sidebar-hover: rgba(139, 90, 43, 0.05);
+  --bg-panel: #faf7f2;
+  --bg-header: rgba(245, 241, 232, 0.9);
+  --border-subtle: rgba(139, 90, 43, 0.08);
+  --border-strong: rgba(139, 90, 43, 0.16);
+  
+  /* Text System */
+  --text-primary: #33261a;
+  --text-secondary: #564736;
+  --text-muted: #857463;
+  --text-white: #1e130a;
+  
+  /* Semantic Variables as requested */
+  --surface-primary: var(--bg-app);
+  --surface-secondary: var(--bg-sidebar);
+  --surface-card: #faf7f2;
+  --border-color: var(--border-subtle);
+  --bg-overlay: rgba(51, 38, 26, 0.35);
+  
+  /* Accents */
+  --accent: #8b5a2b;
+  --accent-rgb: 139, 90, 43;
+  --accent-alt: #70441e;
+  --accent-hover: #70441e;
+  --glow-color: transparent;
+  
+  /* Cards */
+  --card-bg-from: #faf7f2;
+  --card-bg-to: #efe7da;
+  --card-border: rgba(139, 90, 43, 0.09);
+  --card-hover-border: rgba(139, 90, 43, 0.25);
+  
+  /* Syntaxes & Editor */
+  --editor-bg: #fcfaf6;
+  --editor-toolbar: #efe7da;
+  --editor-console: #f2ebd9;
+  --editor-sidebar: #eae2d1;
+  --editor-active-tab: #fcfaf6;
+  --editor-inactive-tab: #e5dac9;
+  
+  /* Layout effects */
+  --shadow-premium: 0 6px 16px rgba(139, 90, 43, 0.03);
+  --font-app: var(--font-serif);
+  --card-shadow: 0 2px 8px rgba(139, 90, 43, 0.02);
+  
+  --quiz-bg-active: rgba(139, 90, 43, 0.08);
+  --quiz-text-active: #70441e;
+  --quiz-border-active: rgba(139, 90, 43, 0.25);
+  --quiz-bg-hover: rgba(139, 90, 43, 0.02);
+  --quiz-text-hover: #70441e;
+  --quiz-border-hover: rgba(139, 90, 43, 0.15);
+}
+
+/* ==================================================== */
+/* 🧱 BASE STYLES AND LAYOUT SETTINGS                   */
+/* ==================================================== */
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-app);
+  line-height: 1.7;
+  transition: background-color 250ms cubic-bezier(0.16, 1, 0.3, 1), 
+              color 250ms cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 250ms cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1), 
+              font-family 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Global Transition Hook for Theme Changes */
+.layout, main, header, div, button, input, sidebar, .editor-shell, .editor-toolbar, .editor-console, span, h1, h2, h3, h4, p, table, th, td, a {
+  transition: background-color 250ms cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 250ms cubic-bezier(0.16, 1, 0.3, 1), 
+              color 250ms cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1), 
+              text-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1), 
+              fill 250ms cubic-bezier(0.16, 1, 0.3, 1), 
+              stroke 250ms cubic-bezier(0.16, 1, 0.3, 1), 
+              font-family 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Paper Theme Texture Overlay Decoration */
+[data-theme="paper"] .layout::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 10;
+  background-image: radial-gradient(#8b5a2b 25%, transparent 26%), radial-gradient(#8b5a2b 25%, transparent 26%);
+  background-size: 5px 5px;
+  background-position: 0 0, 2.5px 2.5px;
+}
+
+/* Custom Highlight Selections */
+[data-theme="light"] ::selection, [data-theme="light"] *::selection {
+  background-color: rgba(59, 130, 246, 0.16) !important;
+  color: #0f172a !important;
+}
+[data-theme="paper"] ::selection, [data-theme="paper"] *::selection {
+  background-color: rgba(139, 90, 43, 0.18) !important;
+  color: #1a0f0f !important;
+}
+
+/* Typography styles for Editorial Paper theme */
+[data-theme="paper"] h1,
+[data-theme="paper"] h2,
+[data-theme="paper"] h3,
+[data-theme="paper"] h4,
+[data-theme="paper"] .font-sans {
+  font-family: var(--font-serif), Georgia, serif !important;
+  letter-spacing: -0.01em;
+}
+
+[data-theme="paper"] .font-mono {
+  font-family: var(--font-mono), monospace !important;
+}
+
+/* ==================================================== */
+/* 🔗 NORMALIZATION & CLASSES OVERRIDES                */
+/* ==================================================== */
+
+.layout {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+}
+
+/* Overlay backdrops */
+.bg-black\/70 {
+  background-color: var(--bg-overlay) !important;
+  backdrop-blur: 4px;
+}
+
+/* Custom mapping overrides for standard text primitives to support Adaptive values globally */
+.text-white { color: var(--text-white) !important; }
+.text-zinc-100, .text-slate-100, .text-gray-100 { color: var(--text-white) !important; }
+.text-zinc-200, .text-slate-200, .text-gray-200 { color: var(--text-primary) !important; }
+.text-zinc-300, .text-slate-300, .text-gray-300 { color: var(--text-secondary) !important; }
+.text-zinc-400, .text-slate-400, .text-gray-400 { color: var(--text-secondary) !important; }
+.text-zinc-500, .text-slate-500, .text-gray-500 { color: var(--text-muted) !important; }
+.text-zinc-600, .text-slate-600, .text-gray-650 { color: var(--text-muted) !important; }
+
+/* Active Indigo highlighted components in Headers & Breadcrumbs */
+.text-\[\#a5b4fc\] { color: var(--accent) !important; }
+
+/* Layout Structural Box-model Mapping Overrides */
+.bg-\[\#04060f\] { background-color: var(--bg-app) !important; }
+.bg-\[\#04060f\]\/80 { background-color: var(--bg-header) !important; }
+.bg-\[\#070b1a\] { background-color: var(--bg-sidebar) !important; }
+.bg-\[\#080d21\] { background-color: var(--bg-sidebar-header) !important; }
+.bg-\[\#080d21\]\/60 { background-color: rgba(var(--bg-app-rgb), 0.3) !important; }
+.bg-\[\#050814\]\/40 { background-color: rgba(var(--bg-app-rgb), 0.45) !important; }
+.bg-\[\#020511\]\/40 { background-color: var(--editor-console) !important; }
+.bg-\[\#060815\] { background-color: var(--editor-console) !important; }
+
+/* Dashboard and Sidebar Elements */
+#sidebar {
+  background-color: var(--bg-sidebar) !important;
+  border-right: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--shadow-premium) !important;
+}
+.bg-white\/\[0\.01\] { background-color: transparent !important; }
+.bg-white\/\[0\.02\] { background-color: var(--border-subtle) !important; }
+.bg-white\/\[0\.03\] { background-color: var(--border-subtle) !important; }
+.bg-white\/\[0\.04\] { background-color: var(--border-subtle) !important; }
+.hover\:bg-white\/\[0\.02\]:hover { background-color: var(--bg-sidebar-hover) !important; }
+.hover\:bg-white\/\[0\.03\]:hover { background-color: var(--bg-sidebar-hover) !important; }
+.hover\:bg-white\/\[0\.04\]:hover { background-color: var(--bg-sidebar-hover) !important; }
+.hover\:bg-white\/\[0\.05\]:hover { background-color: var(--bg-sidebar-hover) !important; }
+.hover\:bg-white\/\[0\.06\]:hover { background-color: var(--border-strong) !important; }
+.hover\:bg-white\/\[0\.08\]:hover { background-color: var(--border-strong) !important; }
+
+/* Selected lesson or quiz in Sidebar */
+.bg-indigo-600\/10 {
+  background-color: rgba(var(--accent-rgb), 0.08) !important;
+  border-color: var(--accent) !important;
+}
+.text-indigo-200 {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+.border-indigo-500 {
+  border-color: var(--accent) !important;
+}
+
+/* Sidebar Final Quiz Button overrides */
+.bg-\[\#0c1228\]\/40 {
+  background-color: rgba(var(--accent-rgb), 0.05) !important;
+  border-color: var(--border-subtle) !important;
+}
+.from-amber-500\/10 {
+  background: rgba(234, 179, 8, 0.06) !important;
+  border-color: rgba(234, 179, 8, 0.15) !important;
+}
+
+/* Subtle & Strong Borders mappings */
+.border-white\/5 { border-color: var(--border-subtle) !important; }
+.border-white\/\[0\.02\] { border-color: var(--border-subtle) !important; }
+.border-white\/\[0\.03\] { border-color: var(--border-subtle) !important; }
+.border-white\/\[0\.04\] { border-color: var(--border-subtle) !important; }
+.border-white\/\[0\.05\] { border-color: var(--border-subtle) !important; }
+.border-white\/10 { border-color: var(--border-strong) !important; }
+.border-white\/\[0\.12\] { border-color: var(--border-strong) !important; }
+
+/* Progress Pill elements */
+.bg-indigo-500\/\[0\.03\] { background-color: rgba(var(--accent-rgb), 0.05) !important; }
+.border-indigo-500\/10 { border-color: rgba(var(--accent-rgb), 0.15) !important; }
+.border-indigo-500\/15 { border-color: rgba(var(--accent-rgb), 0.15) !important; }
+.border-indigo-500\/20 { border-color: rgba(var(--accent-rgb), 0.22) !important; }
+.border-indigo-500\/30 { border-color: rgba(var(--accent-rgb), 0.3) !important; }
+.hover\:border-indigo-500\/25:hover { border-color: rgba(var(--accent-rgb), 0.35) !important; }
+.hover\:border-indigo-500\/40:hover { border-color: rgba(var(--accent-rgb), 0.45) !important; }
+.text-indigo-300 { color: var(--accent) !important; }
+
+/* Atmospheric glows control */
+[data-theme="light"] .bg-indigo-500\/\[0\.04\],
+[data-theme="light"] .bg-violet-500\/\[0\.03\],
+[data-theme="light"] .bg-indigo-600\/\[0\.03\] {
+  opacity: 0.12;
+}
+[data-theme="paper"] .bg-indigo-500\/\[0\.04\],
+[data-theme="paper"] .bg-violet-500\/\[0\.03\],
+[data-theme="paper"] .bg-indigo-600\/\[0\.03\] {
+  display: none !important;
+}
+
+/* ==================================================== */
+/* 💻 CODE EDITOR & MARKDOWN SYNTAX HIGHLIGHT           */
+/* ==================================================== */
+
+.bg-\[\#070913\] { background-color: var(--editor-bg) !important; }
+.bg-\[\#0b0e1b\] { background-color: var(--editor-toolbar) !important; }
+.bg-\[\#05070e\] { background-color: var(--editor-inactive-tab) !important; }
+.bg-\[\#0e1222\] { background-color: var(--editor-active-tab) !important; }
+.bg-\[\#030509\] { background-color: var(--editor-sidebar) !important; }
+.bg-\[\#0d1021\] { background-color: var(--editor-bg) !important; }
+.bg-\[\#03050c\]\/60 { background-color: var(--editor-sidebar) !important; }
+.bg-\[\#020409\] { background-color: var(--editor-console) !important; }
+.bg-\[\#04060d\] { background-color: var(--editor-toolbar) !important; }
+
+/* Editor Option Items & Dropdowns */
+.bg-\[\#0b0e17\] { background-color: var(--editor-inactive-tab) !important; }
+
+/* Boundaries & Shadows */
+.editor-shell {
+  border-color: var(--border-strong) !important;
+  box-shadow: var(--shadow-premium) !important;
+}
+.editor-toolbar {
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+.editor-console {
+  border-top: 1px solid var(--border-subtle) !important;
+}
+
+/* Interactive elements in Lectures and Documents style */
+.markdown-body pre, .bg-\[\#0b0e1a\] {
+  background-color: var(--editor-bg) !important;
+  border-color: var(--border-subtle) !important;
+}
+code, .bg-indigo-500\/10 {
+  background-color: rgba(var(--accent-rgb), 0.08) !important;
+  border-color: rgba(var(--accent-rgb), 0.18) !important;
+  color: var(--accent) !important;
+}
+
+/* Heading blocks marker block in Markdown */
+.markdown-body h2::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1.2rem;
+  background: var(--accent) !important;
+  border-radius: 2px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* ==================================================== */
+/* 🃏 COURSE TIMELINES AND CARDS                        */
+/* ==================================================== */
+
+/* Gradient from-to components adaptivity */
+.bg-gradient-to-b.from-\[\#0d1430\].to-\[\#080d21\] {
+  background: linear-gradient(180deg, var(--card-bg-from) 0%, var(--card-bg-to) 100%) !important;
+  border-color: var(--card-border) !important;
+  box-shadow: var(--card-shadow) !important;
+}
+.hover\:border-indigo-500\/30:hover {
+  border-color: var(--card-hover-border) !important;
+}
+
+/* Content Area bottom chapter blocks */
+.bg-gradient-to-b.from-\[\#0a1024\].to-\[\#060a17\] {
+  background: linear-gradient(180deg, var(--card-bg-from) 0%, var(--card-bg-to) 100%) !important;
+  border-color: var(--card-border) !important;
+  box-shadow: var(--shadow-premium) !important;
+}
+
+/* Course Overview Banner card */
+.bg-gradient-to-br.from-\[\#0c102a\].via-\[\#080b20\].to-\[\#040612\] {
+  background: linear-gradient(135deg, var(--card-bg-from) 0%, var(--bg-app) 100%) !important;
+  border-color: var(--border-strong) !important;
+  box-shadow: var(--shadow-premium) !important;
+}
+
+/* Dark layout-gradient containers mapping to adapt cleanly */
+.bg-gradient-to-b.from-\[\#0c102c\].to-\[\#040614\] {
+  background: linear-gradient(180deg, var(--card-bg-from) 0%, var(--card-bg-to) 100%) !important;
+  border-color: var(--card-border) !important;
+  box-shadow: var(--shadow-premium) !important;
+}
+
+/* Quiz Option Item adaptation */
+.bg-\[\#0f1530\] {
+  background-color: var(--editor-bg) !important;
+  border-color: var(--border-subtle) !important;
+}
+.bg-\[\#0d1430\]\/70 {
+  background-color: var(--card-bg-from) !important;
+}
+.bg-\[\#090e24\]\/40 {
+  background-color: rgba(var(--accent-rgb), 0.04) !important;
+}
+
+/* Adaptive tables backgrounds */
+.bg-\[\#070c1e\]\/60 {
+  background-color: var(--card-bg-from) !important;
+}
+.bg-\[\#0b1129\] {
+  background-color: var(--editor-toolbar) !important;
+}
+
+/* Dashboard Timeline Items & Lists maps */
+.bg-\[\#070c1e\]\/40 {
+  background-color: var(--card-bg-from) !important;
+  border-color: var(--card-border) !important;
+}
+.hover\:bg-\[\#070c1e\]\/60:hover {
+  background-color: var(--card-bg-to) !important;
+}
+.hover\:bg-\[\#090f2b\]\/60:hover {
+  background-color: var(--card-bg-to) !important;
+}
+.bg-\[\#060814\]\/40 {
+  background-color: var(--card-bg-from) !important;
+}
+
+/* Dashboard Filter tabs */
+.bg-\[\#060814\] {
+  background-color: var(--editor-toolbar) !important;
+  border-color: var(--border-subtle) !important;
+}
+.bg-\[\#0e122b\] {
+  background-color: var(--bg-app) !important;
+  border-color: var(--border-strong) !important;
+}
+
+/* Timeline vertical line */
+.border-\[\#12193b\] {
+  border-color: var(--border-strong) !important;
+}
+
+/* Quiz cards and indicators */
+.bg-black\/30 {
+  background-color: rgba(0, 0, 0, 0.15) !important;
+}
+[data-theme="light"] .bg-black\/30 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+[data-theme="paper"] .bg-black\/30 {
+  background-color: rgba(139, 90, 43, 0.05) !important;
+  border-color: rgba(139, 90, 43, 0.1) !important;
+}
+
+/* ==================================================== */
+/* 🏛️ EXAM PREPARATION ARCHIVE COLOR SYNCHRONIZATION     */
+/* ==================================================== */
+
+/* Filter layout sections & Semester groups */
+.bg-\[\#080d21\]\/50 {
+  background-color: rgba(8, 13, 33, 0.5) !important;
+}
+[data-theme="light"] .bg-\[\#080d21\]\/50 {
+  background-color: var(--bg-sidebar-header) !important;
+  border-color: var(--border-subtle) !important;
+}
+[data-theme="paper"] .bg-\[\#080d21\]\/50 {
+  background-color: var(--bg-sidebar-header) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+.bg-\[\#060a17\]\/40 {
+  background-color: rgba(6, 10, 23, 0.4) !important;
+}
+[data-theme="light"] .bg-\[\#060a17\]\/40 {
+  background-color: var(--bg-sidebar) !important;
+  border-color: var(--border-subtle) !important;
+}
+[data-theme="paper"] .bg-\[\#060a17\]\/40 {
+  background-color: var(--bg-sidebar) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+/* Question panel cards wrapper */
+.bg-\[\#040713\]\/70 {
+  background-color: rgba(4, 7, 19, 0.7) !important;
+}
+[data-theme="light"] .bg-\[\#040713\]\/70 {
+  background-color: var(--bg-app) !important;
+  border-color: var(--border-subtle) !important;
+}
+[data-theme="paper"] .bg-\[\#040713\]\/70 {
+  background-color: var(--bg-app) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+.hover\:bg-\[\#070b1a\]\/90:hover {
+  background-color: rgba(7, 11, 26, 0.9) !important;
+}
+[data-theme="light"] .hover\:bg-\[\#070b1a\]\/90:hover {
+  background-color: var(--bg-sidebar-hover) !important;
+}
+[data-theme="paper"] .hover\:bg-\[\#070b1a\]\/90:hover {
+  background-color: var(--bg-sidebar-hover) !important;
+}
+
+.bg-\[\#0d1430\]\/40 {
+  background-color: rgba(13, 20, 48, 0.4) !important;
+}
+[data-theme="light"] .bg-\[\#0d1430\]\/40 {
+  background-color: var(--bg-panel) !important;
+  border-color: var(--border-strong) !important;
+}
+[data-theme="paper"] .bg-\[\#0d1430\]\/40 {
+  background-color: var(--bg-panel) !important;
+  border-color: var(--border-strong) !important;
+}
+
+/* Solutions inner wrap background */
+.bg-black\/15 {
+  background-color: rgba(0, 0, 0, 0.15) !important;
+}
+[data-theme="light"] .bg-black\/15 {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+[data-theme="paper"] .bg-black\/15 {
+  background-color: rgba(139, 90, 43, 0.04) !important;
+}
+
+/* Abstract design glows inside Exam header */
+[data-theme="light"] .bg-indigo-500\/10,
+[data-theme="light"] .bg-violet-600\/5 {
+  opacity: 0.15 !important;
+}
+[data-theme="paper"] .bg-indigo-500\/10,
+[data-theme="paper"] .bg-violet-600\/5 {
+  display: none !important;
+}
+
+/* Additional text helper classes rules for light / paper adaptivity */
+.text-indigo-400 {
+  color: var(--accent) !important;
+}
+[data-theme="light"] .text-indigo-400 {
+  color: var(--accent) !important;
+}
+[data-theme="paper"] .text-indigo-400 {
+  color: var(--accent) !important;
+}
+
+.hover\:bg-indigo-650:hover {
+  background-color: var(--accent) !important;
+  color: var(--text-white) !important;
+}
+
+/* ==================================================== */
+/* 💡 SYNTAX COLORS OVERRIDES (Dark, Light, Paper)      */
+/* ==================================================== */
+
+[data-theme="light"] .text-pink-400 { color: #d73a49 !important; font-weight: 600; } /* keyword */
+[data-theme="light"] .text-teal-400 { color: #005cc5 !important; font-weight: 600; } /* builtin / types */
+[data-theme="light"] .text-emerald-400 { color: #22863a !important; } /* string */
+[data-theme="light"] .text-amber-400 { color: #005cc5 !important; } /* number */
+[data-theme="light"] .text-indigo-400 { color: #6f42c1 !important; font-weight: 600; } /* annotation */
+[data-theme="light"] .text-pink-300 { color: #d73a49 !important; } /* operator */
+[data-theme="light"] .text-zinc-200 { color: #24292e !important; } /* identifier */
+[data-theme="light"] .text-zinc-300 { color: #1e293b !important; } /* fallback */
+[data-theme="light"] .text-zinc-500 { color: #a45300 !important; } /* punctuation */
+[data-theme="light"] .text-slate-500 { color: #6a737d !important; font-style: italic; } /* comment */
+
+[data-theme="paper"] .text-pink-400 { color: #8b5a2b !important; font-weight: 700; } /* keyword */
+[data-theme="paper"] .text-teal-400 { color: #70441e !important; font-weight: 700; } /* builtin */
+[data-theme="paper"] .text-emerald-400 { color: #2b5b3f !important; } /* string */
+[data-theme="paper"] .text-amber-400 { color: #a0522d !important; } /* number */
+[data-theme="paper"] .text-indigo-400 { color: #8b5a2b !important; font-weight: 700; } /* annotation */
+[data-theme="paper"] .text-pink-300 { color: #8b5a2b !important; } /* operator */
+[data-theme="paper"] .text-zinc-200 { color: #4e3d30 !important; } /* identifier */
+[data-theme="paper"] .text-zinc-300 { color: #3c2f2f !important; } /* fallback */
+[data-theme="paper"] .text-zinc-500 { color: #6c5a49 !important; } /* punctuation */
+[data-theme="paper"] .text-slate-500 { color: #7d6e61 !important; font-style: italic; } /* comment */
+
+/* ==================================================== */
+/* ⚡ EFFECTS AND RESPONSIVE GENTLE GLOWS               */
+/* ==================================================== */
+
+/* Neon glows for Developer mode elements */
+[data-theme="dark"] .bg-gradient-to-b.from-\[\#0d1430\].to-\[\#080d21\]:hover {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.12) !important;
+  border-color: rgba(99, 102, 241, 0.4) !important;
+}
+[data-theme="dark"] .bg-[#0c102c] {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.08) !important;
+}
+
+/* Light / Paper scrollbars config */
+[data-theme="light"] .scrollbar-thin::-webkit-scrollbar-thumb,
+[data-theme="light"] .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.09) !important;
+}
+[data-theme="light"] .scrollbar-thin::-webkit-scrollbar-thumb:hover,
+[data-theme="light"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.18) !important;
+}
+
+[data-theme="paper"] .scrollbar-thin::-webkit-scrollbar-thumb,
+[data-theme="paper"] .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(139, 90, 43, 0.1) !important;
+}
+[data-theme="paper"] .scrollbar-thin::-webkit-scrollbar-thumb:hover,
+[data-theme="paper"] .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 90, 43, 0.22) !important;
+}
+
+/* Custom developer terminal scrollbar settings */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: rgba(3, 6, 17, 0.03);
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(93, 106, 241, 0.12);
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(93, 106, 241, 0.3);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}

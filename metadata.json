@@ -1,0 +1,6 @@
+{
+  "name": "Java OOP Masterclass",
+  "description": "A comprehensive interactive platform for learning Java Object-Oriented Programming concepts, from fundamentals to advanced multithreading.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
