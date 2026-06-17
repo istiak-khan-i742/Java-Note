@@ -3,7 +3,7 @@
 # ☕ JAVA MASTERCLASS
 ### Object Oriented Programming with Java
 
-An interactive learning platform designed for students of the Department of CSE & ETE, IIUC.
+An interactive learning platform designed for students of the Department of CCE, IIUC.
 
 <img src="./public/banner.png" alt="Java Masterclass Banner" width="100%">
 
