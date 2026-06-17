@@ -60,7 +60,7 @@ The platform provides a clean and distraction-free learning experience with a de
 | Course Title | Object Oriented Programming with Java |
 | Course Code | CCE-1207 |
 | Credits | 3.0 |
-| Department | CSE / ETE, IIUC |
+| Department | CCE, IIUC |
 | Prerequisite | CCE-1105 |
 
 ---
