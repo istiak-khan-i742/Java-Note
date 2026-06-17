@@ -109,15 +109,6 @@ Start development server:
 npm run dev
 ```
 
-Open:
-
-```text
-http://localhost:5173
-```
-
----
-
-
 ## 🎓 Learning Topics Covered
 
 - Introduction to Java
