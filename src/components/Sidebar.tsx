@@ -397,7 +397,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Developer Credits Footer */}
       <div id="developer-footer" className="py-3 border-t border-[var(--border-subtle)] bg-[var(--bg-sidebar-header)]/40 text-center flex items-center justify-center select-none">
         <span className="text-[10px] font-mono text-[var(--text-muted)] tracking-wider">
-          made by : <span className="text-[var(--accent)] font-bold">&lt;Istiak Khan /&gt;</span>
+          made by : <a href="https://github.com/istiak-khan-i742" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:text-[var(--accent-hover)] font-bold hover:underline transition-all cursor-pointer">&lt;Istiak Khan /&gt;</a>
         </span>
       </div>
     </div>
