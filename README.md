@@ -178,4 +178,11 @@ International Islamic University Chittagong (IIUC)
 
 This project is developed for educational purposes.
 
-© 2026 Istiak Khan. All Rights Reserved.
+
+## ⭐ Support
+
+If you found this project useful, consider giving it a star on GitHub.
+
+---
+
+© 2026 Istiak Khan. Built with ☕ Java & ❤️ for IIUC Students.
