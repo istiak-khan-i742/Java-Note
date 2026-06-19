@@ -121,11 +121,15 @@ http://localhost:5173
 
 ### Course Dashboard
 
-Add project screenshots here.
+<img src="https://github.com/istiak-khan-i742/Java-Note/blob/main/SS1.png?raw=true" width="100%">
 
-```text
-screenshots/dashboard.png
-```
+<br><br>
+
+<img src="https://github.com/istiak-khan-i742/Java-Note/blob/main/SS2.png?raw=true" width="100%">
+
+<br><br>
+
+<img src="https://github.com/istiak-khan-i742/Java-Note/blob/main/SS3.png?raw=true" width="100%">
 
 ---
 
