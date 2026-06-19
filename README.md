@@ -5,7 +5,7 @@
 
 An interactive learning platform designed for students of the Department of CCE, IIUC.
 
-<img src="./public.png" alt="Java Masterclass Banner" width="100%">
+<img src="https://github.com/istiak-khan-i742/Java-Note/blob/c1b3644ea91f10947189fcfe83d8ed6651bbf267/JAVA_note_web.png" alt="Java Masterclass Banner" width="100%">
 
 </div>
 
