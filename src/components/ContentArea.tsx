@@ -54,7 +54,7 @@ const markdownComponents = {
 
     // Default fallback
     return (
-      <pre className="bg-[#0b0e1a] border border-white/5 p-5 rounded-2xl overflow-x-auto font-mono text-xs md:text-sm leading-relaxed text-zinc-300">
+      <pre className="bg-[#0b0e1a] border border-white/5 p-5 rounded-2xl overflow-x-auto font-mono text-xs md:text-[13px] leading-relaxed text-zinc-300">
         {children}
       </pre>
     );
@@ -75,42 +75,42 @@ const markdownComponents = {
     </h3>
   ),
   p: ({ children }: any) => (
-    <p className="text-zinc-300 leading-relaxed text-base mb-4.5 font-normal font-sans">
+    <p className="text-zinc-300 leading-relaxed text-[15px] mb-4.5 font-normal font-sans">
       {children}
     </p>
   ),
   ul: ({ children }: any) => (
-    <ul className="list-disc pl-5 mb-5 space-y-2 text-zinc-300 text-base font-sans">
+    <ul className="list-disc pl-5 mb-5 space-y-2 text-zinc-300 text-[15px] font-sans">
       {children}
     </ul>
   ),
   ol: ({ children }: any) => (
-    <ol className="list-decimal pl-5 mb-5 space-y-2 text-zinc-300 text-base font-sans">
+    <ol className="list-decimal pl-5 mb-5 space-y-2 text-zinc-300 text-[15px] font-sans">
       {children}
     </ol>
   ),
   li: ({ children }: any) => (
-    <li className="pl-1 text-zinc-300 leading-relaxed font-sans text-base">
+    <li className="pl-1 text-zinc-300 leading-relaxed font-sans">
       {children}
     </li>
   ),
   code: ({ className, children, ...props }: any) => {
     // Standard inline code highlight snippet style
     return (
-      <code className="bg-indigo-500/10 border border-indigo-500/15 text-indigo-200 font-mono text-xs px-1.5 py-0.5 rounded font-medium" {...props}>
+      <code className="bg-indigo-500/10 border border-indigo-500/15 text-indigo-200 font-mono text-[12.5px] px-1.5 py-0.5 rounded font-medium" {...props}>
         {children}
       </code>
     );
   },
   table: ({ children }: any) => (
     <div className="overflow-x-auto my-7 rounded-xl border border-white/5 shadow-2xl bg-[#070c1e]/60">
-      <table className="min-w-full divide-y divide-white/5 text-sm leading-relaxed font-sans">
+      <table className="min-w-full divide-y divide-white/5 text-[13px] leading-relaxed font-sans">
         {children}
       </table>
     </div>
   ),
   thead: ({ children }: any) => (
-    <thead className="bg-[#0b1129] text-zinc-200 font-bold uppercase text-xs tracking-wider select-none">
+    <thead className="bg-[#0b1129] text-zinc-200 font-bold uppercase text-[10px] tracking-wider select-none">
       {children}
     </thead>
   ),
@@ -196,7 +196,7 @@ export const ContentArea: React.FC<ContentAreaProps> = ({
                 {lesson.title}
               </h1>
               
-              <p className="text-base md:text-lg text-zinc-400 mb-8 leading-relaxed select-text font-normal">
+              <p className="text-[15px] md:text-[17px] text-zinc-400 mb-8 leading-relaxed select-text font-normal">
                 {lesson.description}
               </p>
 
@@ -247,8 +247,8 @@ export const ContentArea: React.FC<ContentAreaProps> = ({
               <ul className="space-y-4">
                 {lesson.reviewQuestions.map((q, i) => (
                   <li key={i} className="flex gap-4 text-zinc-300 hover:text-white transition-colors group">
-                    <span className="font-mono text-zinc-600 group-hover:text-indigo-400 font-bold select-none text-base">Q{i + 1}.</span>
-                    <span className="flex-1 leading-relaxed text-base font-sans">{q}</span>
+                    <span className="font-mono text-zinc-600 group-hover:text-indigo-400 font-bold select-none">Q{i + 1}.</span>
+                    <span className="flex-1 leading-relaxed text-[14px] font-sans">{q}</span>
                   </li>
                 ))}
               </ul>
