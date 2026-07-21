@@ -3,6 +3,7 @@ import { Copy, Check, Terminal, FileCode, Play, RotateCcw, Edit3, Eye, Sparkles,
 import { runCode, RunResult } from '../utils/javaRunner';
 import { motion, AnimatePresence } from 'motion/react';
 import { clsx } from 'clsx';
+import { triggerHaptic } from '../utils/haptics';
 
 interface CodeBlockProps {
   language: string;
@@ -60,6 +61,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
     try {
       await navigator.clipboard.writeText(code);
       setCopied(true);
+      triggerHaptic('success');
       
       const lineCount = code.split('\n').filter(Boolean).length;
       setToastMessage(`Copied ${lineCount} line${lineCount === 1 ? '' : 's'} of code successfully!`);
@@ -78,6 +80,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
     setIsConsoleOpen(true);
     setRunLogs(["[1/3] Parsing syntax definitions...", "Please wait..."]);
     setRunResult(null);
+    triggerHaptic('medium');
 
     // Dynamic compilation stages for immersion
     setTimeout(() => {
@@ -90,6 +93,11 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
           const result = runCode(language, code);
           setRunResult(result);
           setIsRunning(false);
+          if (result.success) {
+            triggerHaptic('success');
+          } else {
+            triggerHaptic('warning');
+          }
           
           // Auto-scroll output console
           setTimeout(() => {
@@ -109,6 +117,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
     if (textareaRef.current) {
       textareaRef.current.value = value;
     }
+    triggerHaptic('medium');
     
     setToastMessage("Code reverted to initial source template!");
     setShowToast(true);
@@ -296,7 +305,10 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
           {isPlaygroundSupported && (
             <div className="flex p-0.5 bg-[#030509] rounded-lg border border-white/5 shadow-inner">
               <button
-                onClick={() => setActiveTab('reader')}
+                onClick={() => {
+                  setActiveTab('reader');
+                  triggerHaptic('light');
+                }}
                 className={clsx(
                   "flex items-center gap-1.5 px-3.5 py-1 rounded-md text-[11px] font-mono transition-all font-semibold cursor-pointer",
                   activeTab === 'reader' 
@@ -310,7 +322,10 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ language, value }) => {
               </button>
               
               <button
-                onClick={() => setActiveTab('editor')}
+                onClick={() => {
+                  setActiveTab('editor');
+                  triggerHaptic('light');
+                }}
                 className={clsx(
                   "flex items-center gap-1.5 px-3.5 py-1 rounded-md text-[11px] font-mono transition-all font-semibold relative cursor-pointer",
                   activeTab === 'editor' 

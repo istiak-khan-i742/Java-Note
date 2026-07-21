@@ -3,6 +3,7 @@ import { Quiz } from '../data/lessons';
 import { clsx } from 'clsx';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, XCircle, AlertCircle, Sparkles, HelpCircle } from 'lucide-react';
+import { triggerHaptic } from '../utils/haptics';
 
 interface QuizCardProps {
   quiz: Quiz;
@@ -17,6 +18,13 @@ export const QuizCard: React.FC<QuizCardProps> = ({ quiz, index }) => {
     if (selectedOption !== null) return;
     setSelectedOption(optIndex);
     setShowExplanation(true);
+    
+    const isCorrect = quiz.options[optIndex]?.isCorrect;
+    if (isCorrect) {
+      triggerHaptic('success');
+    } else {
+      triggerHaptic('warning');
+    }
   };
 
   return (

@@ -3,6 +3,7 @@ import { Search, X, FileText, ArrowRight, CornerDownLeft } from 'lucide-react';
 import { sections, Lesson } from '../data/lessons';
 import { clsx } from 'clsx';
 import { motion, AnimatePresence } from 'motion/react';
+import { triggerHaptic } from '../utils/haptics';
 
 interface SpotlightSearchProps {
   isOpen: boolean;
@@ -106,13 +107,22 @@ export const SpotlightSearch: React.FC<SpotlightSearchProps> = ({ isOpen, onClos
       onClose();
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setSelectedIndex(prev => Math.min(results.length - 1, prev + 1));
+      setSelectedIndex(prev => {
+        const next = Math.min(results.length - 1, prev + 1);
+        if (next !== prev) triggerHaptic('light');
+        return next;
+      });
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setSelectedIndex(prev => Math.max(0, prev - 1));
+      setSelectedIndex(prev => {
+        const next = Math.max(0, prev - 1);
+        if (next !== prev) triggerHaptic('light');
+        return next;
+      });
     } else if (e.key === 'Enter') {
       if (results[selectedIndex]) {
         onSelectLesson(results[selectedIndex].lesson.id);
+        triggerHaptic('light');
         onClose();
       }
     }
@@ -189,6 +199,7 @@ export const SpotlightSearch: React.FC<SpotlightSearchProps> = ({ isOpen, onClos
                   key={result.lesson.id}
                   onClick={() => {
                     onSelectLesson(result.lesson.id);
+                    triggerHaptic('light');
                     onClose();
                   }}
                   onMouseEnter={() => setSelectedIndex(index)}

@@ -4,6 +4,7 @@ import { ChevronDown, ChevronRight, GraduationCap, Check, Search, X, BookOpen, L
 import { clsx } from 'clsx';
 import { motion, AnimatePresence } from 'motion/react';
 import { BinaryIcon } from './BinaryIcon';
+import { triggerHaptic } from '../utils/haptics';
 
 interface SidebarProps {
   activeLessonId: string;
@@ -54,6 +55,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       ...prev,
       [sectionId]: !prev[sectionId]
     }));
+    triggerHaptic('light');
   };
 
   // Filter sections and lessons
@@ -285,7 +287,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         return (
                           <button
                             key={lesson.id}
-                            onClick={() => onLessonSelect(lesson.id)}
+                            onClick={() => {
+                              onLessonSelect(lesson.id);
+                              triggerHaptic('light');
+                            }}
                             className={clsx(
                               "w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[11.5px] transition-all text-left relative overflow-hidden group/item",
                               isSelected 
@@ -363,7 +368,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
             Exam Preparation
           </div>
           <button
-            onClick={onQuizSelect}
+            onClick={() => {
+              onQuizSelect();
+              triggerHaptic('light');
+            }}
             className={clsx(
               "w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-xs transition-all text-left border relative overflow-hidden group",
               isQuizActive 

@@ -23,6 +23,7 @@ import {
   Compass,
   AlertCircle
 } from 'lucide-react';
+import { triggerHaptic } from '../utils/haptics';
 
 interface CLOMap {
   id: string;
@@ -52,6 +53,7 @@ export const CourseOverviewDashboard: React.FC = () => {
 
   const toggleLecture = (id: string) => {
     setExpandedLectures(prev => ({ ...prev, [id]: !prev[id] }));
+    triggerHaptic('light');
   };
 
   // 1. CLO Data Mapping
@@ -349,7 +351,7 @@ export const CourseOverviewDashboard: React.FC = () => {
             🎓 ISCED Code: 0613
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-500/15 border border-violet-500/30 text-[10px] font-extrabold text-[#7b8bf7] tracking-widest uppercase font-mono">
-            🏦 Dept of ETE/CSE, IIUC
+            🏦 Department of Computer & Communication Engineering (CCE), IIUC
           </span>
         </div>
 
@@ -357,7 +359,7 @@ export const CourseOverviewDashboard: React.FC = () => {
           Object Oriented Programming with <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 animate-gradient">JAVA</span>
         </h1>
         <p className="text-sm md:text-[15.5px] text-zinc-400 leading-relaxed font-normal max-w-2xl mb-6">
-          কম্পিউটার সায়েন্স ও টেলিকমিউনিকেশন ইঞ্জিনিয়ারিং বিভাগের দ্বাদশ ব্যাচের কোর্স <strong className="text-zinc-200">CCE-1207</strong> এর সম্পূর্ণ একাডেমিক সিলেবাস, CLO-PLO ম্যাপিং, নম্বরের রূপরেখা এবং ৪টি প্রধান মডিউল সমন্বিত ইন্টারেক্টিভ লার্নিং ড্যাশবোর্ড।
+          Department of Computer & Communication Engineering (CCE), IIUC-এর CCE-1207: Object Oriented Programming with Java কোর্সের সম্পূর্ণ একাডেমিক লার্নিং পোর্টাল। এখানে কোর্স সিলেবাস, CLO–PLO Mapping, Lecture Notes, Interactive Code Playground, Previous Questions, Quiz এবং Study Resources একটি সমন্বিত প্ল্যাটফর্মে উপস্থাপন করা হয়েছে।
         </p>
 
         {/* 📋 Metrics Banner */}
@@ -407,7 +409,10 @@ export const CourseOverviewDashboard: React.FC = () => {
       {/* 🧭 Tab Navigation */}
       <div className="flex items-center gap-1 bg-[#060814] p-1 rounded-xl border border-white/5 shadow-inner mb-6 overflow-x-auto scrollbar-none select-none">
         <button
-          onClick={() => setActiveTab('overview')}
+          onClick={() => {
+            setActiveTab('overview');
+            triggerHaptic('light');
+          }}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
             activeTab === 'overview' ? 'bg-[#0e122b] text-white shadow-md border border-white/5' : 'text-zinc-400 hover:text-white'
           }`}
@@ -415,7 +420,10 @@ export const CourseOverviewDashboard: React.FC = () => {
           <Compass size={14} /> Course Overview
         </button>
         <button
-          onClick={() => setActiveTab('clos')}
+          onClick={() => {
+            setActiveTab('clos');
+            triggerHaptic('light');
+          }}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
             activeTab === 'clos' ? 'bg-[#0e122b] text-white shadow-md border border-white/5' : 'text-zinc-400 hover:text-white'
           }`}
@@ -423,7 +431,10 @@ export const CourseOverviewDashboard: React.FC = () => {
           <Target size={14} /> CLO / PLO Mapping
         </button>
         <button
-          onClick={() => setActiveTab('marks')}
+          onClick={() => {
+            setActiveTab('marks');
+            triggerHaptic('light');
+          }}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
             activeTab === 'marks' ? 'bg-[#0e122b] text-white shadow-md border border-white/5' : 'text-zinc-400 hover:text-white'
           }`}
@@ -431,7 +442,10 @@ export const CourseOverviewDashboard: React.FC = () => {
           <TrendingUp size={14} /> Mark Distribution
         </button>
         <button
-          onClick={() => setActiveTab('syllabus')}
+          onClick={() => {
+            setActiveTab('syllabus');
+            triggerHaptic('light');
+          }}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
             activeTab === 'syllabus' ? 'bg-[#0e122b] text-white shadow-md border border-white/5' : 'text-zinc-400 hover:text-white'
           }`}
@@ -439,7 +453,10 @@ export const CourseOverviewDashboard: React.FC = () => {
           <ListTodo size={14} /> Lecture & Syllabus Outline
         </button>
         <button
-          onClick={() => setActiveTab('books')}
+          onClick={() => {
+            setActiveTab('books');
+            triggerHaptic('light');
+          }}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
             activeTab === 'books' ? 'bg-[#0e122b] text-white shadow-md border border-white/5' : 'text-zinc-400 hover:text-white'
           }`}
@@ -483,7 +500,11 @@ export const CourseOverviewDashboard: React.FC = () => {
                       <div className="text-lg font-bold text-white mb-1.5">Midterm Scope</div>
                       <p className="text-xs text-zinc-400 leading-relaxed mb-3">L1–L15 পর্যন্ত লেকচারের সিলেবাস। ক্লাস, অবজেক্ট, ডাটা টাইপ, কন্ট্রোল লুপ, অপারেটর এবং মেথড কলিং কভার করে।</p>
                       <button 
-                        onClick={() => { setActiveTab('syllabus'); setSyllabusFilter('mid'); }}
+                        onClick={() => { 
+                          setActiveTab('syllabus'); 
+                          setSyllabusFilter('mid'); 
+                          triggerHaptic('medium');
+                        }}
                         className="text-[11px] font-bold text-indigo-400 hover:text-indigo-300 flex items-center gap-1 mt-auto self-start cursor-pointer transition-all"
                       >
                         Explore Topics <ArrowRight size={12} />
@@ -493,7 +514,11 @@ export const CourseOverviewDashboard: React.FC = () => {
                       <div className="text-lg font-bold text-white mb-1.5">Semester End (SEE)</div>
                       <p className="text-xs text-zinc-400 leading-relaxed mb-3">L16–L37 লেকচার সম্পূর্ণ। অ্যাবস্ট্রাক্ট ক্লাস, এক্সেপশন থ্রেড মডেল, ইভেন্ট ডেলিগেশন, ফাইল আইও এবং প্যাকেজ ও ইন্টারফেস।</p>
                       <button 
-                        onClick={() => { setActiveTab('syllabus'); setSyllabusFilter('see'); }}
+                        onClick={() => { 
+                          setActiveTab('syllabus'); 
+                          setSyllabusFilter('see'); 
+                          triggerHaptic('medium');
+                        }}
                         className="text-[11px] font-bold text-violet-400 hover:text-violet-300 flex items-center gap-1 mt-auto self-start cursor-pointer transition-all"
                       >
                         Explore Topics <ArrowRight size={12} />
@@ -532,7 +557,10 @@ export const CourseOverviewDashboard: React.FC = () => {
                   </div>
                   <div className="pt-6 border-t border-white/5 mt-6">
                     <button 
-                      onClick={() => setActiveTab('syllabus')}
+                      onClick={() => {
+                        setActiveTab('syllabus');
+                        triggerHaptic('medium');
+                      }}
                       className="w-full py-2.5 rounded-lg bg-indigo-650 hover:bg-indigo-600 text-white text-xs font-bold transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer border border-indigo-500/20 active:scale-95"
                     >
                       Start Technical Syllabus <ArrowRight size={13} />
@@ -781,7 +809,10 @@ export const CourseOverviewDashboard: React.FC = () => {
                 {/* Mini filters inside timeline */}
                 <div className="flex items-center gap-1 bg-[#060814] p-1 rounded-xl border border-white/5 shadow-inner">
                   <button
-                    onClick={() => setSyllabusFilter('all')}
+                    onClick={() => {
+                      setSyllabusFilter('all');
+                      triggerHaptic('light');
+                    }}
                     className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
                       syllabusFilter === 'all' ? 'bg-[#0e122b] text-white border border-white/5' : 'text-zinc-400 hover:text-white'
                     }`}
@@ -789,7 +820,10 @@ export const CourseOverviewDashboard: React.FC = () => {
                     All Lectures
                   </button>
                   <button
-                    onClick={() => setSyllabusFilter('mid')}
+                    onClick={() => {
+                      setSyllabusFilter('mid');
+                      triggerHaptic('light');
+                    }}
                     className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
                       syllabusFilter === 'mid' ? 'bg-[#0e122b] text-white border border-white/5' : 'text-zinc-400 hover:text-white'
                     }`}
@@ -797,7 +831,10 @@ export const CourseOverviewDashboard: React.FC = () => {
                     Midterm Exam Scope (L1-15)
                   </button>
                   <button
-                    onClick={() => setSyllabusFilter('see')}
+                    onClick={() => {
+                      setSyllabusFilter('see');
+                      triggerHaptic('light');
+                    }}
                     className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
                       syllabusFilter === 'see' ? 'bg-[#0e122b] text-white border border-white/5' : 'text-zinc-400 hover:text-white'
                     }`}

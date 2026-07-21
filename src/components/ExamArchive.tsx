@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import ReactMarkdown from 'react-markdown';
+import { triggerHaptic } from '../utils/haptics';
 
 export const ExamArchive: React.FC = () => {
   // Active semester selection ('all' or specific semester id)
@@ -108,10 +109,12 @@ export const ExamArchive: React.FC = () => {
       ...prev,
       [id]: !prev[id]
     }));
+    triggerHaptic('light');
   };
 
   const toggleStudiedStatus = (id: string, e: React.MouseEvent) => {
     e.stopPropagation(); // Avoid triggering accordion expansion
+    const isRemoving = studiedQuestions.includes(id);
     setStudiedQuestions(prev => {
       if (prev.includes(id)) {
         return prev.filter(qId => qId !== id);
@@ -119,6 +122,7 @@ export const ExamArchive: React.FC = () => {
         return [...prev, id];
       }
     });
+    triggerHaptic(isRemoving ? 'medium' : 'success');
   };
 
   const markAllSemesterStudied = (semesterId: string, e: React.MouseEvent) => {
@@ -136,15 +140,17 @@ export const ExamArchive: React.FC = () => {
     if (allAreCompleted) {
       // Remove all questions of this semester
       setStudiedQuestions(prev => prev.filter(id => !semesterQuestionIds.includes(id)));
+      triggerHaptic('medium');
     } else {
       // Add missing questions of this semester
       setStudiedQuestions(prev => {
         const added = [...prev];
         semesterQuestionIds.forEach(id => {
-          if (!added.includes(id)) added.push(id);
+           if (!added.includes(id)) added.push(id);
         });
         return added;
       });
+      triggerHaptic('success');
     }
   };
 
@@ -153,6 +159,7 @@ export const ExamArchive: React.FC = () => {
     setSelectedSemester('all');
     setSelectedTag('all');
     setQuerySafe('');
+    triggerHaptic('light');
   };
 
   const setQuerySafe = (val: string) => {
@@ -236,7 +243,10 @@ export const ExamArchive: React.FC = () => {
             </label>
             <div className="flex flex-wrap gap-1.5">
               <button
-                onClick={() => setSelectedSemester('all')}
+                onClick={() => {
+                  setSelectedSemester('all');
+                  triggerHaptic('light');
+                }}
                 className={`px-3 py-2 rounded-xl text-xs font-semibold select-none cursor-pointer transition-all ${
                   selectedSemester === 'all'
                     ? 'bg-indigo-600 border border-indigo-500/30 text-white shadow-md'
@@ -248,7 +258,10 @@ export const ExamArchive: React.FC = () => {
               {examsData.map((exam) => (
                 <button
                   key={exam.id}
-                  onClick={() => setSelectedSemester(exam.id)}
+                  onClick={() => {
+                    setSelectedSemester(exam.id);
+                    triggerHaptic('light');
+                  }}
                   className={`px-3 py-2 rounded-xl text-xs font-semibold select-none cursor-pointer transition-all ${
                     selectedSemester === exam.id
                       ? 'bg-indigo-600 border border-indigo-500/30 text-white shadow-md'
@@ -294,7 +307,10 @@ export const ExamArchive: React.FC = () => {
           </label>
           <div className="flex flex-wrap gap-1.5 overflow-x-auto py-1 custom-scrollbar">
             <button
-              onClick={() => setSelectedTag('all')}
+              onClick={() => {
+                setSelectedTag('all');
+                triggerHaptic('light');
+              }}
               className={`px-2.5 py-1.5 rounded-lg text-[10.5px] font-semibold flex-shrink-0 cursor-pointer select-none transition-all ${
                 selectedTag === 'all'
                   ? 'bg-[var(--quiz-bg-active)] border border-[var(--quiz-border-active)] text-[var(--quiz-text-active)] shadow-sm'
@@ -306,7 +322,10 @@ export const ExamArchive: React.FC = () => {
             {allTags.map((tag) => (
               <button
                 key={tag}
-                onClick={() => setSelectedTag(tag)}
+                onClick={() => {
+                  setSelectedTag(tag);
+                  triggerHaptic('light');
+                }}
                 className={`px-2.5 py-1.5 rounded-lg text-[10.5px] font-semibold flex-shrink-0 cursor-pointer select-none transition-all ${
                   selectedTag === tag
                     ? 'bg-[var(--quiz-bg-active)] border border-[var(--quiz-border-active)] text-[var(--quiz-text-active)] shadow-sm animate-pulse-subtle'

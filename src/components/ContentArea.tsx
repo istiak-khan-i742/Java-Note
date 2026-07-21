@@ -8,6 +8,7 @@ import { CourseOverviewDashboard } from './CourseOverviewDashboard';
 import { motion } from 'motion/react';
 import { BookOpen, Check, ArrowRight, ArrowLeft, Bookmark, GraduationCap, ChevronRight, Award } from 'lucide-react';
 import { clsx } from 'clsx';
+import { triggerHaptic } from '../utils/haptics';
 
 interface ContentAreaProps {
   lesson: Lesson | null;
@@ -54,7 +55,7 @@ const markdownComponents = {
 
     // Default fallback
     return (
-      <pre className="bg-[#0b0e1a] border border-white/5 p-5 rounded-2xl overflow-x-auto font-mono text-xs md:text-[13px] leading-relaxed text-zinc-300">
+      <pre className="bg-[#0b0e1a] border border-white/5 p-5 rounded-2xl overflow-x-auto font-mono text-xs md:text-sm leading-relaxed text-zinc-300">
         {children}
       </pre>
     );
@@ -75,42 +76,42 @@ const markdownComponents = {
     </h3>
   ),
   p: ({ children }: any) => (
-    <p className="text-zinc-300 leading-relaxed text-[15px] mb-4.5 font-normal font-sans">
+    <p className="text-zinc-300 leading-relaxed text-base mb-4.5 font-normal font-sans">
       {children}
     </p>
   ),
   ul: ({ children }: any) => (
-    <ul className="list-disc pl-5 mb-5 space-y-2 text-zinc-300 text-[15px] font-sans">
+    <ul className="list-disc pl-5 mb-5 space-y-2 text-zinc-300 text-base font-sans">
       {children}
     </ul>
   ),
   ol: ({ children }: any) => (
-    <ol className="list-decimal pl-5 mb-5 space-y-2 text-zinc-300 text-[15px] font-sans">
+    <ol className="list-decimal pl-5 mb-5 space-y-2 text-zinc-300 text-base font-sans">
       {children}
     </ol>
   ),
   li: ({ children }: any) => (
-    <li className="pl-1 text-zinc-300 leading-relaxed font-sans">
+    <li className="pl-1 text-zinc-300 leading-relaxed font-sans text-base">
       {children}
     </li>
   ),
   code: ({ className, children, ...props }: any) => {
     // Standard inline code highlight snippet style
     return (
-      <code className="bg-indigo-500/10 border border-indigo-500/15 text-indigo-200 font-mono text-[12.5px] px-1.5 py-0.5 rounded font-medium" {...props}>
+      <code className="bg-indigo-500/10 border border-indigo-500/15 text-indigo-200 font-mono text-xs px-1.5 py-0.5 rounded font-medium" {...props}>
         {children}
       </code>
     );
   },
   table: ({ children }: any) => (
     <div className="overflow-x-auto my-7 rounded-xl border border-white/5 shadow-2xl bg-[#070c1e]/60">
-      <table className="min-w-full divide-y divide-white/5 text-[13px] leading-relaxed font-sans">
+      <table className="min-w-full divide-y divide-white/5 text-sm leading-relaxed font-sans">
         {children}
       </table>
     </div>
   ),
   thead: ({ children }: any) => (
-    <thead className="bg-[#0b1129] text-zinc-200 font-bold uppercase text-[10px] tracking-wider select-none">
+    <thead className="bg-[#0b1129] text-zinc-200 font-bold uppercase text-xs tracking-wider select-none">
       {children}
     </thead>
   ),
@@ -156,7 +157,7 @@ export const ContentArea: React.FC<ContentAreaProps> = ({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -15 }}
       transition={{ duration: 0.35, ease: 'easeOut' }}
-      className="px-5 py-10 md:px-10 md:py-16 max-w-[850px] mx-auto w-full flex flex-col min-h-full"
+      className="px-5 py-10 md:px-10 md:py-16 max-w-[1350px] mx-auto w-full flex flex-col min-h-full"
     >
       {lesson && (
         <>
@@ -196,7 +197,7 @@ export const ContentArea: React.FC<ContentAreaProps> = ({
                 {lesson.title}
               </h1>
               
-              <p className="text-[15px] md:text-[17px] text-zinc-400 mb-8 leading-relaxed select-text font-normal">
+              <p className="text-base md:text-lg text-zinc-400 mb-8 leading-relaxed select-text font-normal">
                 {lesson.description}
               </p>
 
@@ -247,8 +248,8 @@ export const ContentArea: React.FC<ContentAreaProps> = ({
               <ul className="space-y-4">
                 {lesson.reviewQuestions.map((q, i) => (
                   <li key={i} className="flex gap-4 text-zinc-300 hover:text-white transition-colors group">
-                    <span className="font-mono text-zinc-600 group-hover:text-indigo-400 font-bold select-none">Q{i + 1}.</span>
-                    <span className="flex-1 leading-relaxed text-[14px] font-sans">{q}</span>
+                    <span className="font-mono text-zinc-600 group-hover:text-indigo-400 font-bold select-none text-base">Q{i + 1}.</span>
+                    <span className="flex-1 leading-relaxed text-base font-sans">{q}</span>
                   </li>
                 ))}
               </ul>
@@ -266,7 +267,10 @@ export const ContentArea: React.FC<ContentAreaProps> = ({
       {/* Sequential Lesson Flow Buttons */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-16 pt-8 border-t border-white/5 select-none font-sans">
         <button
-          onClick={onNavigatePrev}
+          onClick={() => {
+            onNavigatePrev();
+            triggerHaptic('medium');
+          }}
           disabled={!hasPrev}
           className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:text-white text-zinc-400 disabled:opacity-20 disabled:pointer-events-none text-xs font-semibold transition-all cursor-pointer select-none active:scale-95"
         >
@@ -275,7 +279,10 @@ export const ContentArea: React.FC<ContentAreaProps> = ({
 
         {lesson && (
           <button
-            onClick={() => onToggleCompletion(lesson.id)}
+            onClick={() => {
+              onToggleCompletion(lesson.id);
+              triggerHaptic(isCompleted ? 'medium' : 'success');
+            }}
             className={clsx(
               "w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl border font-bold text-xs transition-all cursor-pointer shadow-lg select-none active:scale-95",
               isCompleted 
@@ -296,7 +303,10 @@ export const ContentArea: React.FC<ContentAreaProps> = ({
         )}
 
         <button
-          onClick={onNavigateNext}
+          onClick={() => {
+            onNavigateNext();
+            triggerHaptic('medium');
+          }}
           disabled={!hasNext}
           className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-605 to-violet-650 hover:from-indigo-500 hover:to-violet-600 text-white border border-indigo-550/30 disabled:opacity-20 disabled:pointer-events-none text-xs font-bold transition-all cursor-pointer active:scale-95 shadow-md"
         >

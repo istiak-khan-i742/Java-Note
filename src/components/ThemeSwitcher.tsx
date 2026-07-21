@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Sun, Moon, BookOpen, Check, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { triggerHaptic } from '../utils/haptics';
 
 export type Theme = 'dark' | 'light' | 'paper';
 
@@ -53,7 +54,10 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, onThemeChan
     <div className="relative select-none" ref={containerRef} id="theme-switcher-wrapper">
       {/* Trigger Button - Highly polished and compact */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          setIsOpen(!isOpen);
+          triggerHaptic('light');
+        }}
         className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-indigo-500/20 active:scale-95 cursor-pointer bg-white/[0.03] hover:bg-white/[0.08] text-zinc-400 hover:text-white border border-white/[0.05] shadow-sm theme-switcher-trigger"
         style={{
           backgroundColor: 'rgba(255, 255, 255, 0.04)',
@@ -112,6 +116,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ theme, onThemeChan
                   onClick={() => {
                     onThemeChange(t.id);
                     setIsOpen(false);
+                    triggerHaptic('success');
                   }}
                   className={`w-full flex items-center justify-between text-left px-3.5 py-2.5 rounded-xl cursor-pointer transition-all duration-200 select-none border border-transparent ${
                     isActive 
