@@ -7,6 +7,7 @@ import { sections, section4Quiz, Lesson } from './data/lessons';
 import { Menu, ArrowUp, Search, Compass, LogIn, ChevronLeft, ChevronRight, Check } from 'lucide-react';
 import { clsx } from 'clsx';
 import { AnimatePresence, motion } from 'motion/react';
+import { triggerHaptic } from './utils/haptics';
 
 export default function App() {
   const [theme, setTheme] = useState<Theme>(() => {
@@ -37,6 +38,15 @@ export default function App() {
   });
 
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const [isDesktopSidebarExpanded, setIsDesktopSidebarExpanded] = useState(() => {
+    try {
+      const saved = localStorage.getItem('java_oop_desktop_sidebar_expanded');
+      return saved !== null ? saved === 'true' : false; // Collapsed by default
+    } catch {
+      return false;
+    }
+  });
+
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -55,7 +65,8 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('java_oop_active_lesson', activeLessonId);
     localStorage.setItem('java_oop_quiz_active', String(isQuizActive));
-  }, [activeLessonId, isQuizActive]);
+    localStorage.setItem('java_oop_desktop_sidebar_expanded', String(isDesktopSidebarExpanded));
+  }, [activeLessonId, isQuizActive, isDesktopSidebarExpanded]);
 
   // Track scrolling (reading progress)
   useEffect(() => {
@@ -179,14 +190,18 @@ export default function App() {
       {isMobileSidebarOpen && (
         <div 
           className="fixed inset-0 bg-black/70 backdrop-blur-xs z-40 lg:hidden"
-          onClick={() => setIsMobileSidebarOpen(false)}
+          onClick={() => {
+            setIsMobileSidebarOpen(false);
+            triggerHaptic('light');
+          }}
         />
       )}
 
       {/* Sidebar - sliding drawer on mobile and stationary menu on desk */}
       <div className={clsx(
-        "fixed inset-y-0 left-0 z-40 transform transition-transform duration-300 ease-out lg:static lg:translate-x-0",
-        isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        "fixed inset-y-0 left-0 z-40 transform transition-all duration-300 ease-in-out overflow-hidden lg:static",
+        isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
+        isDesktopSidebarExpanded ? "lg:w-[300px] lg:opacity-100" : "lg:w-0 lg:opacity-0"
       )}>
         <Sidebar 
           activeLessonId={activeLessonId} 
@@ -203,11 +218,18 @@ export default function App() {
         <header className="sticky top-0 z-30 bg-[#04060f]/80 backdrop-blur-xl border-b border-white/[0.05] h-16 flex items-center justify-between px-6 lg:px-8 select-none">
           {/* Section Breadcrumbs */}
           <div className="flex items-center gap-3">
-            {/* Mobile Sidebar Trigger icon */}
+            {/* Sidebar Trigger icon */}
             <button
-              onClick={() => setIsMobileSidebarOpen(true)}
-              className="p-1.5 rounded-lg bg-white/[0.04] border border-white/5 text-zinc-300 hover:text-white hover:bg-white/[0.08] lg:hidden transition-all focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
-              title="Open Navigation"
+              onClick={() => {
+                if (window.innerWidth < 1024) {
+                  setIsMobileSidebarOpen(true);
+                } else {
+                  setIsDesktopSidebarExpanded(prev => !prev);
+                }
+                triggerHaptic('light');
+              }}
+              className="p-1.5 rounded-lg bg-white/[0.04] border border-white/5 text-zinc-300 hover:text-white hover:bg-white/[0.08] transition-all focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
+              title="Toggle Navigation"
             >
               <Menu size={18} />
             </button>
@@ -239,7 +261,10 @@ export default function App() {
           <div className="flex items-center gap-2.5 sm:gap-3 lg:gap-4">
             {/* Spotlight Search search activator container */}
             <button
-              onClick={() => setIsSearchOpen(true)}
+              onClick={() => {
+                setIsSearchOpen(true);
+                triggerHaptic('light');
+              }}
               className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5 text-zinc-400 hover:text-white hover:bg-white/[0.06] transition-all text-xs font-mono select-none"
               title="Search Lessons (Ctrl+K)"
             >
@@ -253,7 +278,10 @@ export default function App() {
 
             {/* Overall course progression element */}
             <div 
-              onClick={handleQuizSelect}
+              onClick={() => {
+                handleQuizSelect();
+                triggerHaptic('light');
+              }}
               className="flex items-center gap-2.5 bg-indigo-500/[0.03] border border-indigo-500/10 hover:border-indigo-500/25 py-1.5 px-3 rounded-full transition-all cursor-pointer group"
               title="Click to view course evaluation"
             >
@@ -301,7 +329,10 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.8, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
-            onClick={scrollToTop}
+            onClick={() => {
+              scrollToTop();
+              triggerHaptic('light');
+            }}
             className="fixed bottom-6 right-6 z-50 p-3 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-700 text-white shadow-xl shadow-indigo-600/20 hover:from-indigo-500 hover:to-indigo-600 hover:scale-110 active:scale-95 transition-all outline-none border border-indigo-400/30 cursor-pointer"
             title="Back to Top"
           >
