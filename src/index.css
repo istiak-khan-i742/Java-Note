@@ -815,6 +815,73 @@ body {
   padding: 0.2rem 0.4rem !important;
 }
 
+/* Markdown Tables */
+.markdown-body table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin-top: 1.75rem !important;
+  margin-bottom: 1.75rem !important;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--surface-card);
+  box-shadow: var(--card-shadow);
+  font-size: clamp(14px, 0.875rem + 0.1vw, 16px) !important;
+  line-height: 1.6 !important;
+}
+
+.markdown-body thead th:first-child {
+  border-top-left-radius: 0.75rem;
+}
+
+.markdown-body thead th:last-child {
+  border-top-right-radius: 0.75rem;
+}
+
+.markdown-body tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 0.75rem;
+}
+
+.markdown-body tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 0.75rem;
+}
+
+.markdown-body thead {
+  background-color: var(--bg-sidebar-header);
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.markdown-body th {
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.markdown-body tbody tr {
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color 0.2s ease;
+}
+
+.markdown-body tbody tr:last-child {
+  border-bottom: none;
+}
+
+.markdown-body tbody tr:hover {
+  background-color: var(--bg-sidebar-hover);
+}
+
+.markdown-body td {
+  padding: 0.75rem 1.25rem;
+  color: var(--text-secondary);
+}
+
 /* Standard code structures spacing */
 .markdown-body pre {
   margin-top: 2rem !important;
