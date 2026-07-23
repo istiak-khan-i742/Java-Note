@@ -76,40 +76,40 @@
   --bg-app-rgb: 245, 247, 250;
   --bg-sidebar: #ffffff;
   --bg-sidebar-header: #f8fafc;
-  --bg-sidebar-hover: rgba(59, 130, 246, 0.04);
+  --bg-sidebar-hover: rgba(59, 130, 246, 0.08);
   --bg-panel: #ffffff;
   --bg-header: rgba(245, 247, 250, 0.88);
-  --border-subtle: rgba(15, 23, 42, 0.06);
-  --border-strong: rgba(15, 23, 42, 0.12);
+  --border-subtle: rgba(15, 23, 42, 0.1);
+  --border-strong: rgba(15, 23, 42, 0.2);
   
   /* Text System */
-  --text-primary: #1e293b;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --text-white: #0f172a;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #475569;
+  --text-white: #000000;
   
   /* Semantic Variables as requested */
   --surface-primary: var(--bg-app);
   --surface-secondary: var(--bg-sidebar);
   --surface-card: #ffffff;
   --border-color: var(--border-subtle);
-  --bg-overlay: rgba(15, 23, 42, 0.4);
+  --bg-overlay: rgba(15, 23, 42, 0.5);
   
   /* Accents */
-  --accent: #3b82f6;
-  --accent-rgb: 59, 130, 246;
-  --accent-alt: #6366f1;
+  --accent: #2563eb;
+  --accent-rgb: 37, 99, 235;
+  --accent-alt: #4f46e5;
   --accent-hover: #1d4ed8;
   --glow-color: transparent;
   
   /* Cards */
   --card-bg-from: #ffffff;
-  --card-bg-to: #f8fafc;
-  --card-border: rgba(15, 23, 42, 0.06);
-  --card-hover-border: rgba(59, 130, 246, 0.3);
+  --card-bg-to: #f1f5f9;
+  --card-border: rgba(15, 23, 42, 0.1);
+  --card-hover-border: rgba(37, 99, 235, 0.4);
   
   /* Syntaxes & Editor */
-  --editor-bg: #fafbfc;
+  --editor-bg: #f8fafc;
   --editor-toolbar: #f1f5f9;
   --editor-console: #f8fafc;
   --editor-sidebar: #f1f5f9;
@@ -117,16 +117,16 @@
   --editor-inactive-tab: #e2e8f0;
   
   /* Layout effects */
-  --shadow-premium: 0 8px 30px rgba(15, 23, 42, 0.04), 0 4px 10px rgba(15, 23, 42, 0.01);
+  --shadow-premium: 0 10px 40px -15px rgba(15, 23, 42, 0.12), 0 4px 10px rgba(15, 23, 42, 0.05);
   --font-app: var(--font-sans);
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -2px rgba(0, 0, 0, 0.02);
+  --card-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
   
-  --quiz-bg-active: rgba(217, 119, 6, 0.08);
-  --quiz-text-active: #b45309;
-  --quiz-border-active: rgba(217, 119, 6, 0.25);
-  --quiz-bg-hover: rgba(217, 119, 6, 0.02);
-  --quiz-text-hover: #b45309;
-  --quiz-border-hover: rgba(217, 119, 6, 0.15);
+  --quiz-bg-active: rgba(217, 119, 6, 0.12);
+  --quiz-text-active: #92400e;
+  --quiz-border-active: rgba(217, 119, 6, 0.35);
+  --quiz-bg-hover: rgba(217, 119, 6, 0.05);
+  --quiz-text-hover: #92400e;
+  --quiz-border-hover: rgba(217, 119, 6, 0.25);
 }
 
 /* 📖 Paper / Reading Mode (Warm off-white) */
@@ -135,57 +135,57 @@
   --bg-app-rgb: 245, 241, 232;
   --bg-sidebar: #efe7da;
   --bg-sidebar-header: #e5dac9;
-  --bg-sidebar-hover: rgba(139, 90, 43, 0.05);
+  --bg-sidebar-hover: rgba(139, 90, 43, 0.08);
   --bg-panel: #faf7f2;
   --bg-header: rgba(245, 241, 232, 0.9);
-  --border-subtle: rgba(139, 90, 43, 0.08);
-  --border-strong: rgba(139, 90, 43, 0.16);
+  --border-subtle: rgba(139, 90, 43, 0.12);
+  --border-strong: rgba(139, 90, 43, 0.22);
   
   /* Text System */
-  --text-primary: #33261a;
-  --text-secondary: #564736;
-  --text-muted: #857463;
-  --text-white: #1e130a;
+  --text-primary: #261c13;
+  --text-secondary: #403223;
+  --text-muted: #6b5847;
+  --text-white: #0a0705;
   
   /* Semantic Variables as requested */
   --surface-primary: var(--bg-app);
   --surface-secondary: var(--bg-sidebar);
   --surface-card: #faf7f2;
   --border-color: var(--border-subtle);
-  --bg-overlay: rgba(51, 38, 26, 0.35);
+  --bg-overlay: rgba(51, 38, 26, 0.45);
   
   /* Accents */
   --accent: #8b5a2b;
   --accent-rgb: 139, 90, 43;
   --accent-alt: #70441e;
-  --accent-hover: #70441e;
+  --accent-hover: #5c3716;
   --glow-color: transparent;
   
   /* Cards */
   --card-bg-from: #faf7f2;
-  --card-bg-to: #efe7da;
-  --card-border: rgba(139, 90, 43, 0.09);
-  --card-hover-border: rgba(139, 90, 43, 0.25);
+  --card-bg-to: #e8ded1;
+  --card-border: rgba(139, 90, 43, 0.12);
+  --card-hover-border: rgba(139, 90, 43, 0.35);
   
   /* Syntaxes & Editor */
-  --editor-bg: #fcfaf6;
-  --editor-toolbar: #efe7da;
-  --editor-console: #f2ebd9;
-  --editor-sidebar: #eae2d1;
-  --editor-active-tab: #fcfaf6;
-  --editor-inactive-tab: #e5dac9;
+  --editor-bg: #f5eedf;
+  --editor-toolbar: #e5dac9;
+  --editor-console: #ebdcc2;
+  --editor-sidebar: #dfd4bf;
+  --editor-active-tab: #f5eedf;
+  --editor-inactive-tab: #d4c7b0;
   
   /* Layout effects */
-  --shadow-premium: 0 6px 16px rgba(139, 90, 43, 0.03);
+  --shadow-premium: 0 10px 40px -15px rgba(139, 90, 43, 0.12), 0 4px 10px rgba(139, 90, 43, 0.05);
   --font-app: var(--font-serif);
-  --card-shadow: 0 2px 8px rgba(139, 90, 43, 0.02);
+  --card-shadow: 0 4px 6px -1px rgba(139, 90, 43, 0.06), 0 2px 4px -2px rgba(139, 90, 43, 0.06);
   
-  --quiz-bg-active: rgba(139, 90, 43, 0.08);
-  --quiz-text-active: #70441e;
-  --quiz-border-active: rgba(139, 90, 43, 0.25);
-  --quiz-bg-hover: rgba(139, 90, 43, 0.02);
-  --quiz-text-hover: #70441e;
-  --quiz-border-hover: rgba(139, 90, 43, 0.15);
+  --quiz-bg-active: rgba(139, 90, 43, 0.12);
+  --quiz-text-active: #5c3716;
+  --quiz-border-active: rgba(139, 90, 43, 0.35);
+  --quiz-bg-hover: rgba(139, 90, 43, 0.05);
+  --quiz-text-hover: #5c3716;
+  --quiz-border-hover: rgba(139, 90, 43, 0.25);
 }
 
 /* ==================================================== */
@@ -356,7 +356,7 @@ body {
 [data-theme="light"] .bg-indigo-500\/\[0\.04\],
 [data-theme="light"] .bg-violet-500\/\[0\.03\],
 [data-theme="light"] .bg-indigo-600\/\[0\.03\] {
-  opacity: 0.12;
+  opacity: 0.2;
 }
 [data-theme="paper"] .bg-indigo-500\/\[0\.04\],
 [data-theme="paper"] .bg-violet-500\/\[0\.03\],
@@ -506,12 +506,12 @@ code, .bg-indigo-500\/10 {
   background-color: rgba(0, 0, 0, 0.15) !important;
 }
 [data-theme="light"] .bg-black\/30 {
-  background-color: rgba(0, 0, 0, 0.04) !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  background-color: rgba(15, 23, 42, 0.06) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
 }
 [data-theme="paper"] .bg-black\/30 {
-  background-color: rgba(139, 90, 43, 0.05) !important;
-  border-color: rgba(139, 90, 43, 0.1) !important;
+  background-color: rgba(139, 90, 43, 0.08) !important;
+  border-color: rgba(139, 90, 43, 0.15) !important;
 }
 
 /* ==================================================== */
@@ -524,11 +524,11 @@ code, .bg-indigo-500\/10 {
 }
 [data-theme="light"] .bg-\[\#080d21\]\/50 {
   background-color: var(--bg-sidebar-header) !important;
-  border-color: var(--border-subtle) !important;
+  border-color: var(--border-strong) !important;
 }
 [data-theme="paper"] .bg-\[\#080d21\]\/50 {
   background-color: var(--bg-sidebar-header) !important;
-  border-color: var(--border-subtle) !important;
+  border-color: var(--border-strong) !important;
 }
 
 .bg-\[\#060a17\]\/40 {
@@ -548,11 +548,11 @@ code, .bg-indigo-500\/10 {
   background-color: rgba(4, 7, 19, 0.7) !important;
 }
 [data-theme="light"] .bg-\[\#040713\]\/70 {
-  background-color: var(--bg-app) !important;
+  background-color: var(--bg-panel) !important;
   border-color: var(--border-subtle) !important;
 }
 [data-theme="paper"] .bg-\[\#040713\]\/70 {
-  background-color: var(--bg-app) !important;
+  background-color: var(--bg-panel) !important;
   border-color: var(--border-subtle) !important;
 }
 
@@ -592,7 +592,7 @@ code, .bg-indigo-500\/10 {
 /* Abstract design glows inside Exam header */
 [data-theme="light"] .bg-indigo-500\/10,
 [data-theme="light"] .bg-violet-600\/5 {
-  opacity: 0.15 !important;
+  opacity: 0.3 !important;
 }
 [data-theme="paper"] .bg-indigo-500\/10,
 [data-theme="paper"] .bg-violet-600\/5 {
@@ -702,3 +702,122 @@ code, .bg-indigo-500\/10 {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.15);
 }
+
+/* ==================================================== */
+/* 📖 OPTIMIZED TYPOGRAPHY & COMFORT READABILITY SCALE  */
+/* ==================================================== */
+
+/* Scoped responsive typography scaling for the main reading canvas */
+main .text-xs,
+.markdown-body .text-xs {
+  font-size: clamp(12px, 0.75rem + 0.1vw, 14.5px) !important; /* Caption: 14-15px on desktop, 12px on mobile */
+}
+main .text-sm,
+.markdown-body .text-sm {
+  font-size: clamp(14px, 0.875rem + 0.1vw, 16px) !important; /* Small text: 16px on desktop, 14px on mobile */
+}
+main .text-base,
+.markdown-body .text-base,
+main p {
+  font-size: clamp(16px, 1rem + 0.15vw, 18px) !important; /* Body text: ~18px on desktop, 16px on mobile */
+}
+main .text-lg,
+.markdown-body .text-lg {
+  font-size: clamp(18px, 1.125rem + 0.2vw, 22px) !important; /* Section titles / sub-headings: ~22px */
+}
+main .text-xl,
+.markdown-body .text-xl {
+  font-size: clamp(20px, 1.25rem + 0.25vw, 25px) !important; /* Section titles: ~25px */
+}
+main .text-2xl,
+.markdown-body .text-2xl {
+  font-size: clamp(22px, 1.375rem + 0.35vw, 30px) !important; /* Lesson titles: ~30px */
+}
+main .text-3xl,
+.markdown-body .text-3xl {
+  font-size: clamp(26px, 1.625rem + 0.45vw, 35px) !important; /* Headings: ~35px */
+}
+main .text-4xl,
+.markdown-body .text-4xl {
+  font-size: clamp(30px, 1.875rem + 0.6vw, 40px) !important; /* Main page headings: ~40px */
+}
+main .text-5xl,
+.markdown-body .text-5xl {
+  font-size: clamp(34px, 2.125rem + 0.8vw, 52px) !important; /* Hero title: ~52px */
+}
+
+/* Base Body line height and text rendering optimizations */
+body {
+  line-height: 1.75 !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium reading rhythm and spacing inside Lecture markdown documents */
+.markdown-body {
+  font-size: clamp(16px, 1rem + 0.15vw, 18px) !important;
+  line-height: 1.8 !important;
+}
+
+.markdown-body p {
+  font-size: clamp(16px, 1rem + 0.15vw, 18px) !important;
+  line-height: 1.8 !important;
+  margin-top: 0 !important;
+  margin-bottom: 1.8rem !important; /* Better spacing between paragraphs */
+  color: var(--text-secondary) !important;
+}
+
+.markdown-body ul, .markdown-body ol {
+  font-size: clamp(16px, 1rem + 0.15vw, 18px) !important;
+  line-height: 1.8 !important;
+  margin-top: 0 !important;
+  margin-bottom: 1.8rem !important;
+}
+
+.markdown-body li {
+  font-size: clamp(16px, 1rem + 0.15vw, 18px) !important;
+  line-height: 1.8 !important;
+  margin-bottom: 0.65rem !important; /* Generous rhythm for bullet list items */
+  color: var(--text-secondary) !important;
+}
+
+/* Precise spacing and margins for Headings to avoid clutter and improve scannability */
+.markdown-body h1 {
+  font-size: clamp(28px, 1.75rem + 0.5vw, 40px) !important; /* Main page headings */
+  margin-top: 3.2rem !important;
+  margin-bottom: 1.6rem !important;
+  line-height: 1.3 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.markdown-body h2 {
+  font-size: clamp(22px, 1.375rem + 0.35vw, 30px) !important; /* Lesson titles / Major sections */
+  margin-top: 2.8rem !important;
+  margin-bottom: 1.4rem !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+}
+
+.markdown-body h3 {
+  font-size: clamp(19px, 1.15rem + 0.25vw, 24px) !important; /* Section titles */
+  margin-top: 2.2rem !important;
+  margin-bottom: 1.1rem !important;
+  line-height: 1.4 !important;
+  font-weight: 600 !important;
+}
+
+/* Inline code adjustments inside reading blocks */
+.markdown-body code {
+  font-size: clamp(13px, 0.8rem + 0.05vw, 15px) !important;
+  padding: 0.2rem 0.4rem !important;
+}
+
+/* Standard code structures spacing */
+.markdown-body pre {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+

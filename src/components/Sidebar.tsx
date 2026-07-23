@@ -161,7 +161,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   };
 
   return (
-    <div id="sidebar" className="w-[300px] min-w-[300px] bg-[var(--bg-sidebar)] border-r border-[var(--border-subtle)] h-screen sticky top-0 flex flex-col z-40 shadow-2xl overflow-hidden">
+    <div id="sidebar" className="w-[300px] min-w-[300px] bg-[var(--bg-sidebar)] border-r border-[var(--border-subtle)] h-screen flex flex-col z-40 shadow-2xl overflow-hidden">
       {/* Brand Section */}
       <div className="p-6 pb-5 border-b border-[var(--border-subtle)] bg-gradient-to-b from-[var(--bg-sidebar-header)] to-[var(--bg-sidebar)] relative">
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-strong)]/30 to-transparent pointer-events-none" />

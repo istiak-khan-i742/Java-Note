@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Lesson, Quiz } from '../data/lessons';
 import { QuizCard } from './QuizCard';
 import { ExamArchive } from './ExamArchive';
@@ -103,38 +104,6 @@ const markdownComponents = {
       </code>
     );
   },
-  table: ({ children }: any) => (
-    <div className="overflow-x-auto my-7 rounded-xl border border-white/5 shadow-2xl bg-[#070c1e]/60">
-      <table className="min-w-full divide-y divide-white/5 text-sm leading-relaxed font-sans">
-        {children}
-      </table>
-    </div>
-  ),
-  thead: ({ children }: any) => (
-    <thead className="bg-[#0b1129] text-zinc-200 font-bold uppercase text-xs tracking-wider select-none">
-      {children}
-    </thead>
-  ),
-  tbody: ({ children }: any) => (
-    <tbody className="divide-y divide-white/[0.03] text-zinc-300">
-      {children}
-    </tbody>
-  ),
-  tr: ({ children }: any) => (
-    <tr className="hover:bg-white/[0.01] transition-colors">
-      {children}
-    </tr>
-  ),
-  th: ({ children }: any) => (
-    <th className="px-5 py-3 text-left font-semibold">
-      {children}
-    </th>
-  ),
-  td: ({ children }: any) => (
-    <td className="px-5 py-3 prose prose-invert font-sans">
-      {children}
-    </td>
-  ),
 };
 
 export const ContentArea: React.FC<ContentAreaProps> = ({ 
@@ -228,7 +197,7 @@ export const ContentArea: React.FC<ContentAreaProps> = ({
 
               {/* Primary Lecture Document Content */}
               <div className="markdown-body select-text text-zinc-200 pr-0.5">
-                <ReactMarkdown components={markdownComponents}>
+                <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkGfm]}>
                   {lesson.content}
                 </ReactMarkdown>
               </div>

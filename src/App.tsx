@@ -199,7 +199,7 @@ export default function App() {
 
       {/* Sidebar - sliding drawer on mobile and stationary menu on desk */}
       <div className={clsx(
-        "fixed inset-y-0 left-0 z-40 transform transition-all duration-300 ease-in-out overflow-hidden lg:static",
+        "fixed inset-y-0 left-0 z-40 transform transition-all duration-300 ease-in-out overflow-hidden lg:sticky lg:top-0 lg:h-screen lg:shrink-0",
         isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
         isDesktopSidebarExpanded ? "lg:w-[300px] lg:opacity-100" : "lg:w-0 lg:opacity-0"
       )}>

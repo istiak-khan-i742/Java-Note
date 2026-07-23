@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { triggerHaptic } from '../utils/haptics';
 
 export const ExamArchive: React.FC = () => {
@@ -524,7 +525,7 @@ export const ExamArchive: React.FC = () => {
 
                                       {/* Rendered answers markdown */}
                                       <div className="markdown-body text-xs md:text-[13px] text-zinc-300 leading-relaxed pr-0.5 select-text">
-                                        <ReactMarkdown>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
                                           {q.answer}
                                         </ReactMarkdown>
                                       </div>
