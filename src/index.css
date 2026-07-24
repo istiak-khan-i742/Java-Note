@@ -869,6 +869,10 @@ body {
   transition: background-color 0.2s ease;
 }
 
+.markdown-body tbody tr:nth-child(even) {
+  background-color: var(--bg-sidebar-hover);
+}
+
 .markdown-body tbody tr:last-child {
   border-bottom: none;
 }
